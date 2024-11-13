@@ -2,8 +2,8 @@
 
 return [
     'commands' => [
-        'migrate:fresh' => true,
-        'seed' => true,
+        'key_generate' => true,
+        'migrate' => true,
     ],
-    'drop_database_if_exists' => true,
+    'drop_database_if_exists' => false,
 ];

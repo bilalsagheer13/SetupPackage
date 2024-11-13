@@ -1,29 +1,29 @@
 <?php
 
-namespace Jaldi\SetupPackage;
+namespace Bilalsagheer13\SetupPackage;
 
 use Illuminate\Support\ServiceProvider;
+use Bilalsagheer13\SetupPackage\Commands\SetupCommand;
 
 class SetupPackageServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-        // Merge default config with published config
-        $this->mergeConfigFrom(__DIR__ . '/../config/setup.php', 'setup');
-    }
-
     public function boot()
     {
-        // Publish config file to the main Laravel config directory
-        $this->publishes([
-            __DIR__ . '/../config/setup.php' => config_path('setup.php'),
-        ], 'config');
-
-        // Register your command
         if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/config/setup.php' => config_path('setup.php'),
+            ], 'config');
+
             $this->commands([
-                Commands\SetupCommand::class,
+                SetupCommand::class,
             ]);
         }
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/setup.php', 'setup'
+        );
     }
 }

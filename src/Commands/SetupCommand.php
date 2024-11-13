@@ -1,6 +1,6 @@
 <?php
 
-namespace Jaldi\SetupPackage\Commands;
+namespace Bilalsagheer13\SetupPackage\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -62,5 +62,24 @@ class SetupCommand extends Command
                 $this->warn("Database setup skipped. Make sure to create it before running the application.");
             }
         }
+    }
+
+    protected function dropAndRecreateDatabase($database)
+    {
+        DB::statement("DROP DATABASE IF EXISTS {$database}");
+        DB::statement("CREATE DATABASE {$database}");
+        $this->info("Database '{$database}' dropped and recreated.");
+    }
+
+    protected function createDatabase($database)
+    {
+        DB::statement("CREATE DATABASE {$database}");
+        $this->info("Database '{$database}' created.");
+    }
+
+    protected function runMigrationsAndSeed()
+    {
+        Artisan::call('migrate --seed');
+        $this->info('Migrations and seeders executed.');
     }
 }

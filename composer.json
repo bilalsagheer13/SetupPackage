@@ -1,6 +1,8 @@
 {
     "name": "bilalsagheer13/setuppackage",
     "description": "A setup package for Laravel",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Bilal Sagheer",
@@ -8,15 +10,19 @@
             "role": "Full Stack Developer"
         }
     ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
     "autoload": {
         "psr-4": {
-            "Jaldi\\SetupPackage\\": "src/"
+            "Bilalsagheer13\\SetupPackage\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Jaldi\\SetupPackage\\SetupPackageServiceProvider"
+                "Bilalsagheer13\\SetupPackage\\SetupPackageServiceProvider"
             ]
         }
     }
