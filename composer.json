@@ -1,0 +1,23 @@
+{
+    "name": "jaldi/setuppackage",
+    "description": "A setup package for Laravel",
+    "authors": [
+        {
+            "name": "Bilal Sagheer",
+            "email": "bilalsagheer13@gmail.com",
+            "role": "Full Stack Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jaldi\\SetupPackage\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jaldi\\SetupPackage\\SetupPackageServiceProvider"
+            ]
+        }
+    }
+}
